@@ -1,0 +1,17 @@
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units in Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let temp of products">
+        <td>{{temp.name}}</td>
+        <td>{{temp.unitPrice | currency:"USD"}}</td>
+        <td>{{temp.unitsInStock}}</td>
+</tr>
+
+    </tbody>
+</table>
