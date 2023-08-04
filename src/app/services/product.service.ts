@@ -41,6 +41,8 @@ export class ProductService {
       map(response => response._embedded.products)
     );
   }
+
+  // this an out of box of spring for http://localhost:8080/api/products/1 no code need to write.
   getProduct(theProductId: number): Observable<Product>  {
     // you need to build the url based on the product id
     const productUrl = `${this.baseUrl}/${theProductId}`;
