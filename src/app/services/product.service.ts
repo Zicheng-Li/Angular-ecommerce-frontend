@@ -42,7 +42,7 @@ export class ProductService {
   }
 }
   
-
+// for unwarp json
 interface GetResponseProducts {
   _embedded: {
     products: Product[];
