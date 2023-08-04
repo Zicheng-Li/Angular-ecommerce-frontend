@@ -10,6 +10,8 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
+// Angular language service angular.io/guide/language-service
+
 const routes : Routes = [
   {path: 'products/:id', component: ProductDetailsComponent}, // this a out of box of spring for http://localhost:8080/api/products/1 no code need to write.
   {path: 'search/:keyword', component: ProductListComponent},
