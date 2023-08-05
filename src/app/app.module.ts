@@ -10,7 +10,15 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 // Angular language service angular.io/guide/language-service
+// ng-bootstrap
+// special angular syntax for two-way data binding [()]
+// [] this is one way data binding
+// () this is one way data binding, for event binding, when user click page change, it will 
+
 
 const routes : Routes = [
   {path: 'products/:id', component: ProductDetailsComponent}, // this a out of box of spring for http://localhost:8080/api/products/1 no code need to write.
@@ -33,7 +41,8 @@ const routes : Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
