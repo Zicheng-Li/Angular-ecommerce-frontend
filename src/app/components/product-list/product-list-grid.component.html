@@ -23,6 +23,30 @@
                 </div>
 
             </div>
+            <!--begin footer-->
+            <!-- ng-bootstrap 
+                special angular syntax for two-way data binding [()]
+                [] this is one way data binding
+                () this is one way data binding, for event binding, when user click page change, it will -->
+            <div class="footer--pagination">
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%;">
+                                <ngb-pagination [(page)]="thePageNumber"
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                (pageChange)="listProducts()">
+
+                                </ngb-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end footer-->
 
         </div>
 
