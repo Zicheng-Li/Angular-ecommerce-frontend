@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
+
   products: Product[] = [];
   currentCategoryId: number = 1;
   previousCategoryId: number=1;
@@ -117,4 +118,10 @@ export class ProductListComponent implements OnInit {
     this.thePageNumber = 1;
     this.listProducts();
     }
-}
+
+    addToCart(_t7: Product) {
+      console.log(`Adding to cart: ${_t7.name}, ${_t7.unitPrice}`);
+      // TODO: Add code to add product to cart
+    
+    }
+  }   
