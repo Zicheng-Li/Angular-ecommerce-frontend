@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -20,6 +21,8 @@ export class ProductListComponent implements OnInit {
     thePageNumber: number = 1;
     thePageSize: number = 5;
     theTotalElements: number = 0;
+
+    previousKeyword: string = '';
   
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { }
@@ -40,13 +43,31 @@ export class ProductListComponent implements OnInit {
 }
   handleSearchProducts() {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
-    // now search for the products using the keyword
-    this.productService.searchProducts(theKeyword).subscribe(
-      data => {
-        this.products = data;
-      });
-  }
 
+    // if we have different keyword than previous, then set thePageNumber back to 1
+    if (this.previousKeyword != theKeyword) {
+      this.thePageNumber = 1;
+    }
+    this.previousKeyword = theKeyword;
+    console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
+    // now search for the products using the keyword
+    this.productService.searchProductsPaginate(this.thePageNumber - 1,
+      this.thePageSize,
+      theKeyword).subscribe({
+        next: data => { 
+          this.products = data._embedded.products;
+          this.thePageNumber = data.page.number + 1;
+          this.thePageSize = data.page.size;
+          this.theTotalElements = data.page.totalElements;
+          console.log('Request finished', data);
+    },
+    error: err => {
+      console.error('Error:', err);
+    }}
+      );
+  }
+  
+  
   handleListProducts() {
      // check id id parameter is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
