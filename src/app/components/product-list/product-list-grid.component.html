@@ -26,8 +26,8 @@
             <!--begin footer-->
             <!-- ng-bootstrap 
                 special angular syntax for two-way data binding [()]
-                [] this is one way data binding
-                () this is one way data binding, for event binding, when user click page change, it will -->
+                [] this is one way data binding, it will get the result from the service
+                () this is one way data binding, for event binding, when user click page change, it will sent the event to the service. -->
             <div class="footer--pagination">
                 <div class="row">
                     <div class="col-md-6">
@@ -40,6 +40,16 @@
                                                 [collectionSize]="theTotalElements"
                                                 (pageChange)="listProducts()">
                                 </ngb-pagination>
+                            </div>
+                            <div class="col-md-3 mt-2" style="text-align: right">
+                                <span class="mr-2">Page Size</span>
+                                <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                                    <option selected="true">5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>30</option>
+                                    <option>50</option>
+                                </select>
                             </div>
                         </div>
                     </div>
