@@ -74,15 +74,19 @@ export class ProductListComponent implements OnInit {
     }
     this.previousCategoryId = this.currentCategoryId;
     console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
-    this.productService.getProductListPaginate(this.currentCategoryId
-                                  , this.thePageNumber - 1, 
-                                    this.thePageSize).subscribe(
-      data => { 
+    this.productService.getProductListPaginate(this.thePageNumber - 1, // there is a serious bug, the order of parameter is different than productService.getProductListPaginate parameter, so make load the page error, make infinite loop.
+      this.thePageSize,
+      this.currentCategoryId).subscribe({
+      next: data => { 
         this.products = data._embedded.products;
         this.thePageNumber = data.page.number + 1;
         this.thePageSize = data.page.size;
         this.theTotalElements = data.page.totalElements;
-  }
-    )
+        console.log('Request finished', data);
+  },
+  error: err => {
+    console.error('Error:', err);
+  }}
+    );
   }
 }
