@@ -46,14 +46,14 @@ export class CheckoutComponent implements OnInit {
   onSubmit() {
     console.log("Handling the submit button");
     console.log(this.checkoutFormGroup.get('customer')?.value);
-    console.log("the email is " +this.checkoutFormGroup.get('customer')?.value.email);
+    console.log("the email is " + this.checkoutFormGroup.get('customer')?.value.email);
   }
   copyShipToBill(event: Event) {
     const target = event.target as HTMLInputElement;
-    if(target.checked) {
+    if (target.checked) {
       this.checkoutFormGroup.controls['billingAddress'].setValue(this.checkoutFormGroup.controls['shippingAddress'].value)
     }
-    else{
+    else {
       this.checkoutFormGroup.controls['billingAddress'].reset();
     }
   }
