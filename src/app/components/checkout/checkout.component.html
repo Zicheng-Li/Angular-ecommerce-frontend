@@ -208,7 +208,7 @@
                         <div class="col-md-2"><label>Expiration Year</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select formControlName="expirationYear">
+                                <select formControlName="expirationYear" (change)="handleMandY()">
                                     <option *ngFor="let year of years">
                                         {{year}}
                                     </option>

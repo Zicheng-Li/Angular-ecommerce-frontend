@@ -9,6 +9,7 @@ import { FormService } from 'src/app/services/form.service';
 })
 export class CheckoutComponent implements OnInit {
 
+
   checkoutFormGroup!: FormGroup;
   totalPrice: number=0;
   totalQuantity: number=0;
@@ -79,5 +80,26 @@ export class CheckoutComponent implements OnInit {
       this.checkoutFormGroup.controls['billingAddress'].reset();
     }
   }
+  handleMandY() {
+    const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
+    const currentYear: number = new Date().getFullYear();
+    const selectYear: number = Number(creditCardFormGroup?.value.expirationYear);
+
+    // if the current year is equal to the year of the current month, then start with current month
+    let startMonth: number;
+    if (currentYear === selectYear) {
+      startMonth = new Date().getMonth() + 1;
+    }
+    else{
+      startMonth = 1;
+    }
+
+    this.form.getMonth(startMonth).subscribe(
+      data => {
+        console.log("month is " + JSON.stringify(data));
+        this.months = data;
+      });
+  }
+    
 
 }
