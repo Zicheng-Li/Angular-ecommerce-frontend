@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country } from 'src/app/common/country';
 import { FormService } from 'src/app/services/form.service';
 
 @Component({
@@ -15,6 +16,9 @@ export class CheckoutComponent implements OnInit {
   totalQuantity: number=0;
   years: number[] = [];
   months: number[] = [];
+
+  counties: Country[]=[];
+
   constructor(private formBuilder: FormBuilder,
             private form: FormService) { }
 
@@ -64,6 +68,13 @@ export class CheckoutComponent implements OnInit {
         console.log("year is " + JSON.stringify(data));
         this.years = data;
       });
+
+      // populate the countries
+      this.form.getCountries().subscribe(
+        data => {
+          console.log("countries are " + JSON.stringify(data));
+          this.counties = data;
+        });
   }
 
   onSubmit() {
