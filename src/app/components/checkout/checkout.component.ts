@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { FormService } from 'src/app/services/form.service';
 
 @Component({
@@ -18,6 +19,9 @@ export class CheckoutComponent implements OnInit {
   months: number[] = [];
 
   counties: Country[]=[];
+
+  shippingAddStates: State[]=[];
+  billingAddStates: State[]=[];
 
   constructor(private formBuilder: FormBuilder,
             private form: FormService) { }
@@ -111,6 +115,29 @@ export class CheckoutComponent implements OnInit {
         this.months = data;
       });
   }
+
+  getStates(formGroupName: string) {
+    const formGroup = this.checkoutFormGroup.get(formGroupName);
+
+    const countryCode: string = formGroup?.value.country.code;
+    const countryName: string = formGroup?.value.country.name;
+
+    console.log(`country code is ${countryCode} and country name is ${countryName}`);
+    this.form.getStates(countryCode).subscribe(
+      data => {
+        if (formGroupName === 'shippingAddress') {
+          this.shippingAddStates = data;
+        }
+        else{
+          this.billingAddStates = data;
+        }
+
+        // select the first state in the list
+        formGroup?.get('state')?.setValue(data[0]);
+      })
+  }
+}
+    
     
 
-}
+

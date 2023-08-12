@@ -40,7 +40,7 @@
                         <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select formControlName="country">
+                                <select formControlName="country" (change)="getStates('shippingAddress')">
                                     <option *ngFor="let country of counties" [ngValue]="country">
                                         {{ country.name }}
                                     </option>
@@ -72,7 +72,9 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option value="">TODO</option>
+                                    <option *ngFor="let state of shippingAddStates" [ngValue]="state">
+                                        {{state.name}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -104,8 +106,10 @@
                         <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select formControlName="country">
-                                    <option value="">TODO</option>
+                                <select formControlName="country" (change)="getStates('billingAddress')">
+                                    <option *ngFor="let country of counties" [ngValue]="country">
+                                        {{ country.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -134,7 +138,9 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option value="">TODO</option>
+                                    <option *ngFor="let state of billingAddStates" [ngValue]="state">
+                                        {{state.name}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
