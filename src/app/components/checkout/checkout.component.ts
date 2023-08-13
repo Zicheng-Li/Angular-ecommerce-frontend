@@ -88,6 +88,11 @@ export class CheckoutComponent implements OnInit {
     console.log("the shipping address  country is " + this.checkoutFormGroup.get('shippingAddress')?.value.country.name);
     console.log("the shipping address state is " + this.checkoutFormGroup.get('shippingAddress')?.value.state.name);
   }
+
+  get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
+  get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
+  get email() { return this.checkoutFormGroup.get('customer.email'); }
+
   copyShipToBill(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.checked) {
