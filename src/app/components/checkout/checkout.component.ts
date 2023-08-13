@@ -49,10 +49,10 @@ export class CheckoutComponent implements OnInit {
         zipCode: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace])
       }),
       creditCard: this.formBuilder.group({
-        cardType: [''],
-        nameOnCard: [''],
-        cardNumber: [''],
-        securityCode: [''],
+        cardType: new FormControl('', [Validators.required]),
+        nameOnCard: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]),
+        cardNumber: new FormControl('', [Validators.pattern('[0-9]{16}'),Validators.required]),
+        securityCode: new FormControl('', [Validators.pattern('[0-9]{3}'),Validators.required]),
         expirationMonth: [''],
         expirationYear: ['']
       })
@@ -98,7 +98,7 @@ export class CheckoutComponent implements OnInit {
   get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
   get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
   get email() { return this.checkoutFormGroup.get('customer.email'); }
-  
+
   get shippingStreet() { return this.checkoutFormGroup.get('shippingAddress.street'); }
   get shippingCity() { return this.checkoutFormGroup.get('shippingAddress.city'); }
   get shippingState() { return this.checkoutFormGroup.get('shippingAddress.state'); }
@@ -110,6 +110,13 @@ export class CheckoutComponent implements OnInit {
   get billingState() { return this.checkoutFormGroup.get('billingAddress.state'); }
   get billingCountry() { return this.checkoutFormGroup.get('billingAddress.country'); }
   get billingZipCode() { return this.checkoutFormGroup.get('billingAddress.zipCode'); }
+
+  get creditCardType() { return this.checkoutFormGroup.get('creditCard.cardType'); }
+  get creditCardName() { return this.checkoutFormGroup.get('creditCard.nameOnCard'); }
+  get creditCardNumber() { return this.checkoutFormGroup.get('creditCard.cardNumber'); }
+  get creditCardSecurityCode() { return this.checkoutFormGroup.get('creditCard.securityCode'); }
+  get creditCardExpirationMonth() { return this.checkoutFormGroup.get('creditCard.expirationMonth'); }
+  get creditCardExpirationYear() { return this.checkoutFormGroup.get('creditCard.expirationYear'); }
 
   copyShipToBill(event: Event) {
     const target = event.target as HTMLInputElement;
