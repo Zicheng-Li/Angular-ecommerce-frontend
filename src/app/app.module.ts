@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // special angular syntax for two-way data binding [()]
 // [] this is one way data binding
 // () this is one way data binding, for event binding, when user click page change, it will 
-
+// Angular validation, validators.email and pattern only check the format, do not check if the email is real
 
 const routes : Routes = [
   {path: 'checkout', component: CheckoutComponent},
