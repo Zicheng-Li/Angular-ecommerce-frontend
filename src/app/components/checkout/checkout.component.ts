@@ -42,11 +42,11 @@ export class CheckoutComponent implements OnInit {
         zipCode: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace])
       }),
       billingAddress: this.formBuilder.group({
-        street: [''],
-        city: [''],
-        state: [''],
-        country: [''],
-        zipCode: ['']
+        street: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]),
+        city: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]),
+        state: new FormControl('', [Validators.required]),
+        country: new FormControl('', [Validators.required]),
+        zipCode: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace])
       }),
       creditCard: this.formBuilder.group({
         cardType: [''],
@@ -98,11 +98,18 @@ export class CheckoutComponent implements OnInit {
   get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
   get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
   get email() { return this.checkoutFormGroup.get('customer.email'); }
+  
   get shippingStreet() { return this.checkoutFormGroup.get('shippingAddress.street'); }
   get shippingCity() { return this.checkoutFormGroup.get('shippingAddress.city'); }
   get shippingState() { return this.checkoutFormGroup.get('shippingAddress.state'); }
   get shippingCountry() { return this.checkoutFormGroup.get('shippingAddress.country'); }
   get shippingZipCode() { return this.checkoutFormGroup.get('shippingAddress.zipCode'); }
+
+  get billingStreet() { return this.checkoutFormGroup.get('billingAddress.street'); }
+  get billingCity() { return this.checkoutFormGroup.get('billingAddress.city'); }
+  get billingState() { return this.checkoutFormGroup.get('billingAddress.state'); }
+  get billingCountry() { return this.checkoutFormGroup.get('billingAddress.country'); }
+  get billingZipCode() { return this.checkoutFormGroup.get('billingAddress.zipCode'); }
 
   copyShipToBill(event: Event) {
     const target = event.target as HTMLInputElement;
