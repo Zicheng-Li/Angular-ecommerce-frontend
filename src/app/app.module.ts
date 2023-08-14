@@ -23,6 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 // [] this is one way data binding
 // () this is one way data binding, for event binding, when user click page change, it will 
 // Angular validation, validators.email and pattern only check the format, do not check if the email is real
+// replaySubject is a subclass of subject, it will record the previous subject before the subsrcibe
+// behaviourSubject is a subclass of subject, it have a notion "current value", it will send the latest message/event to new subscriber
 
 const routes : Routes = [
   {path: 'checkout', component: CheckoutComponent},
