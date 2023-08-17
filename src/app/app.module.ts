@@ -15,6 +15,7 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 
 // Angular language service angular.io/guide/language-service
@@ -25,6 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Angular validation, validators.email and pattern only check the format, do not check if the email is real
 // replaySubject is a subclass of subject, it will record the previous subject before the subsrcibe
 // behaviourSubject is a subclass of subject, it have a notion "current value", it will send the latest message/event to new subscriber
+// OAuth2, JSON Web Token, JWT, JWT is a standard for authentication
+// Open ID Connect
+// Okta
+
 
 const routes : Routes = [
   {path: 'checkout', component: CheckoutComponent},
@@ -47,7 +52,8 @@ const routes : Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
