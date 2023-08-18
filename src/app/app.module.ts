@@ -28,7 +28,7 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 // behaviourSubject is a subclass of subject, it have a notion "current value", it will send the latest message/event to new subscriber
 // OAuth2, JSON Web Token, JWT, JWT is a standard for authentication
 // Open ID Connect
-// Okta
+// OktaAuthGuard
 
 import{
   OktaAuthModule,
@@ -38,6 +38,7 @@ import{
 
 import { OktaAuth } from '@okta/okta-auth-js';
 import myAppConfig from './config/my-app-config';
+import { MembersPageComponent } from './components/members-page/members-page.component';
 const oktaConfig =  myAppConfig.oidc;
 
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -67,7 +68,8 @@ const routes : Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     LoginComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    MembersPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
