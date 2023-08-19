@@ -13,8 +13,9 @@ export class CartService {
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
   storage: Storage = sessionStorage;
-
-  constructor() {
+  // storage: Storage = localStorage;     
+   // local storage is a place to store data, data is persisted and survives browser restarts
+  constructor() { // we are using session storage to store cart items, so we don't need to pass the storage argument to the constructor
     // read data from local storage if it exists
     let data = JSON.parse(this.storage.getItem('cartItems') || '[]');  // JSON parse read the data and convert a JSON string to object
     if (data.length > 0) {
@@ -66,6 +67,9 @@ export class CartService {
     
     // log cart data just for debugging purposes
     this.logCartData(totalPriceValue, totalQuantityValue);
+
+    // persist cart items
+    this.persistCartItems();
   
   }
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
