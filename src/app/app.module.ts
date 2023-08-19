@@ -29,6 +29,7 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 // OAuth2, JSON Web Token, JWT, JWT is a standard for authentication
 // Open ID Connect
 // OktaAuthGuard
+// web storage api, HTML5: store the data use storage.setItem(key, value), retrieve data using storage.getItem(key)
 
 import{
   OktaAuthModule,
