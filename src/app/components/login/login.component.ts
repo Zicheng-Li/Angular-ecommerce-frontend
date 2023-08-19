@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
       logo : 'assets/images/logo.png',
       baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
       clientId: myAppConfig.oidc.clientId,
-      redrictUri: myAppConfig.oidc.redirectUri,
+      redirectUri: myAppConfig.oidc.redirectUri,  // redirectUri is missspell, I wrote redrictUri instead redirectUri, it cause it serious bug, it can not redirect to the right page.
       authParams: {
         pkce: true, // passing the info between our app and authorization server.
         issuer: myAppConfig.oidc.issuer,
