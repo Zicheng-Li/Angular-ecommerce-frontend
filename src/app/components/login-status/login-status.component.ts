@@ -31,6 +31,7 @@ export class LoginStatusComponent implements OnInit {
       this.oktaAuth.getUser().then(
         (user) => {
           this.userFullName = user.name as string;
+          //fdfsdfs
 
           // retrieve the user email from authentication response
           const theEmail = user.email;
