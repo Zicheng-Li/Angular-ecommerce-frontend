@@ -11,6 +11,8 @@ export class LoginStatusComponent implements OnInit {
   isAuthenticated: boolean =false;
   userFullName: string = '';
 
+  stroge: Storage = sessionStorage;
+
   constructor( private oktaAuthService: OktaAuthStateService,
     @Inject(OKTA_AUTH) private oktaAuth: OktaAuth) { }
 
@@ -29,6 +31,11 @@ export class LoginStatusComponent implements OnInit {
       this.oktaAuth.getUser().then(
         (user) => {
           this.userFullName = user.name as string;
+
+          // retrieve the user email from authentication response
+          const theEmail = user.email;
+          // now store the email in session storage
+          this.stroge.setItem('theEmail', JSON.stringify(theEmail));
         }
       )
     }
