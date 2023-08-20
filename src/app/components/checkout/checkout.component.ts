@@ -30,6 +30,8 @@ export class CheckoutComponent implements OnInit {
   shippingAddStates: State[]=[];
   billingAddStates: State[]=[];
 
+  storage : Storage = sessionStorage;
+
   constructor(private formBuilder: FormBuilder,
             private form: FormService,
             private cartService: CartService,
@@ -39,12 +41,15 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
 
     this.reviewCartDetails();
+
+    // read the user's email 
+    const theEmail =JSON.parse(this.storage.getItem("theEmail")!);
     
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]), // MyValidators.notOnlyWhitespace need to put it to the array with others together
         lastName: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]),
-        email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]),
+        email: new FormControl(theEmail, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]),
       }),  
 
       shippingAddress: this.formBuilder.group({
