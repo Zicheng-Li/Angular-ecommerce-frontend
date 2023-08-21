@@ -2,11 +2,9 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-
-// the default run commond is this environment
 export const environment = {
   production: false,
-  myApiUrl: 'https://localhost:8443/api'
+  myApiUrl: 'https://localhost:9898/api'
 
 };
 
