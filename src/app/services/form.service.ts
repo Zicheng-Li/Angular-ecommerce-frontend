@@ -4,14 +4,16 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Country } from '../common/country';
 import { State } from '../common/state';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
 
-  private countriesURL = 'http://localhost:8080/api/countries';
-  private stateURL = 'http://localhost:8080/api/states';
+  private countriesURL = environment.myApiUrl + '/countries';
+  private stateURL = environment.myApiUrl + '/states';
 
   constructor(private httpClient: HttpClient) { }
 
