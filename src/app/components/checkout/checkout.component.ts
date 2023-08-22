@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 import { Country } from 'src/app/common/country';
 import { Order } from 'src/app/common/order';
 import { OrderItem } from 'src/app/common/order-item';
+import { PaymentInfo } from 'src/app/common/payment-info';
 import { Purchase } from 'src/app/common/purchase';
 import { State } from 'src/app/common/state';
 import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { FormService } from 'src/app/services/form.service';
 import { MyValidators } from 'src/app/validators/my-validators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-checkout',
@@ -32,6 +34,11 @@ export class CheckoutComponent implements OnInit {
 
   storage : Storage = sessionStorage;
 
+  // initialize Stripe Api
+  stripe=Stripe(environment.stripePublishableKey);
+  paymentInfo:PaymentInfo= new PaymentInfo();
+  cardElement:any;
+  displayError:any="";
   constructor(private formBuilder: FormBuilder,
             private form: FormService,
             private cartService: CartService,
@@ -39,6 +46,8 @@ export class CheckoutComponent implements OnInit {
             private router:Router) { }
 
   ngOnInit(): void {
+    // set up stripe payment form
+    this.setupStripePaymentForm();
 
     this.reviewCartDetails();
 
@@ -67,30 +76,30 @@ export class CheckoutComponent implements OnInit {
         zipCode: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace])
       }),
       creditCard: this.formBuilder.group({
-        cardType: new FormControl('', [Validators.required]),
-        nameOnCard: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]),
-        cardNumber: new FormControl('', [Validators.pattern('[0-9]{16}'),Validators.required]),
-        securityCode: new FormControl('', [Validators.pattern('[0-9]{3}'),Validators.required]),
-        expirationMonth: [''],
-        expirationYear: ['']
+        // cardType: new FormControl('', [Validators.required]),
+        // nameOnCard: new FormControl('', [Validators.required, Validators.minLength(2), MyValidators.notOnlyWhitespace]),
+        // cardNumber: new FormControl('', [Validators.pattern('[0-9]{16}'),Validators.required]),
+        // securityCode: new FormControl('', [Validators.pattern('[0-9]{3}'),Validators.required]),
+        // expirationMonth: [''],
+        // expirationYear: ['']
       })
     });
-    // populate the months
-    const startMonth: number = new Date().getMonth() + 1; // +1 becuase it is 0 based
-    console.log("start month is " + startMonth);
+    //  populate the months
+    // const startMonth: number = new Date().getMonth() + 1; // +1 becuase it is 0 based
+    // console.log("start month is " + startMonth);
 
-    this.form.getMonth(startMonth).subscribe(
-      data => {
-        console.log("month is " + JSON.stringify(data));
-        this.months = data;
-      });
+    // this.form.getMonth(startMonth).subscribe(
+    //   data => {
+    //     console.log("month is " + JSON.stringify(data));
+    //     this.months = data;
+    //   });
 
-    // populate the years
-    this.form.getYear().subscribe(
-      data => {
-        console.log("year is " + JSON.stringify(data));
-        this.years = data;
-      });
+     // populate the years
+    // this.form.getYear().subscribe(
+    //   data => {
+    //     console.log("year is " + JSON.stringify(data));
+    //     this.years = data;
+    //   });
 
       // populate the countries
       this.form.getCountries().subscribe(
@@ -98,6 +107,26 @@ export class CheckoutComponent implements OnInit {
           console.log("countries are " + JSON.stringify(data));
           this.counties = data;
         });
+  }
+  setupStripePaymentForm() {
+    // get a handle to the card element
+    var elements = this.stripe.elements();
+    // create a card element and hide the zip-code field
+    this.cardElement=elements.create('card', {hidePostalCode:true});
+    
+    // add instance of card UI to HTML
+    this.cardElement.mount('#card-element');
+    
+    // add event binding to card element change
+    this.cardElement.on('change', (event:any) => {
+      // get a handle to card errors elements
+      this.displayError= document.getElementById('card-errors');
+      if(event.complete) {
+        this.displayError.textContent="";
+      } else if(event.error) {
+        this.displayError.textContent=event.error.message;
+      }})
+    ;
   }
   reviewCartDetails() {
     // subscribe to the cart totalPrice
