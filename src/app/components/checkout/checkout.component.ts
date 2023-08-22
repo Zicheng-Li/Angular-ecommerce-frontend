@@ -39,6 +39,9 @@ export class CheckoutComponent implements OnInit {
   paymentInfo:PaymentInfo= new PaymentInfo();
   cardElement:any;
   displayError:any="";
+
+  isDisabled: boolean=false;
+
   constructor(private formBuilder: FormBuilder,
             private form: FormService,
             private cartService: CartService,
@@ -191,6 +194,8 @@ export class CheckoutComponent implements OnInit {
     // - confirm card payment
     // -place order
     if(!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
+      this.isDisabled=true;
+
       this.checkoutService.cretaPaymentIntent(this.paymentInfo).subscribe(
         data => {
           this.stripe.confirmCardPayment(data.client_secret, {
@@ -212,6 +217,7 @@ export class CheckoutComponent implements OnInit {
               if(result.error) {
                 // inform the error to the user
                 alert(`there was an error: ${result.error.message}`);
+                this.isDisabled=false;
               }
               else{
                 // call the rest api to place order
@@ -220,9 +226,11 @@ export class CheckoutComponent implements OnInit {
                     alert(`Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`);
                     // reset cart
                     this.resetCart();
+                    this.isDisabled=false;
                   },
                   error: (err:any) => {
                     alert(`There was an error: ${err.message}`);
+                    this.isDisabled=false;
                   }
                 })
               }}
