@@ -181,20 +181,48 @@ export class CheckoutComponent implements OnInit {
     purchase.order = order;
     purchase.orderItems = orderItems;
 
-    // call REST api via the CheckoutService
-    this.checkoutService.placeOrder(purchase).subscribe(
-      {
-        next: response => {
-          alert(`Order has been placed successfully.\nOrder tracking number is: ${response.orderTrackingNumber}`);
+    // compute total price
+    this.paymentInfo.amount= Math.round(this.totalPrice * 100); // bug fixed, it need to round before sending to backend, it will display the 18.98 otherwise
+    this.paymentInfo.currency = "USD";
+  
 
-          // reset cart
-          this.resetCart();
-        },
-        error: err => {
-          alert(`There was an error: ${err.message}`);
-        }
-      })
-    
+    // if valid form then
+    // - create payment intent
+    // - confirm card payment
+    // -place order
+    if(!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
+      this.checkoutService.cretaPaymentIntent(this.paymentInfo).subscribe(
+        data => {
+          this.stripe.confirmCardPayment(data.client_secret, {
+            payment_method: {
+              card: this.cardElement
+            }},
+            {handleActions:false})
+            .then((result:any) => {
+              if(result.error) {
+                // inform the error to the user
+                alert(`there was an error: ${result.error.message}`);
+              }
+              else{
+                // call the rest api to place order
+                this.checkoutService.placeOrder(purchase).subscribe({
+                  next: (response:any) => {
+                    alert(`Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`);
+                    // reset cart
+                    this.resetCart();
+                  },
+                  error: (err:any) => {
+                    alert(`There was an error: ${err.message}`);
+                  }
+                })
+              }}
+        );
+    });}
+    else{
+      this.checkoutFormGroup.markAllAsTouched(); // this will trigger the display of all error messages
+      return;
+    }
+  
     console.log(this.checkoutFormGroup.get('customer')?.value);
     console.log("the email is " + this.checkoutFormGroup.get('customer')?.value.email);
     console.log("the shipping address  country is " + this.checkoutFormGroup.get('shippingAddress')?.value.country.name);
