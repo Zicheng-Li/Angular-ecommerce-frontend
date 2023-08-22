@@ -195,8 +195,18 @@ export class CheckoutComponent implements OnInit {
         data => {
           this.stripe.confirmCardPayment(data.client_secret, {
             payment_method: {
-              card: this.cardElement
-            }},
+              card: this.cardElement,
+              billing_details: {
+                email: purchase.customer.email,
+                name : `${purchase.customer.firstName} ${purchase.customer.lastName} `,
+                address:{
+                  line1: purchase.billingAddress.street,
+                  city: purchase.billingAddress.city,
+                  state : purchase.billingAddress.state,
+                  postal_code: purchase.billingAddress.zipCode,
+                  country: this.billingCountry?.value.code
+                }
+            }}},
             {handleActions:false})
             .then((result:any) => {
               if(result.error) {
@@ -234,6 +244,7 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartItems = [];
     this.cartService.totalPrice.next(0);
     this.cartService.totalQuantity.next(0);
+    this.cartService.persistCartItems();
 
     // reset the form data
     this.checkoutFormGroup.reset();
