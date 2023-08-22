@@ -187,6 +187,7 @@ export class CheckoutComponent implements OnInit {
     // compute total price
     this.paymentInfo.amount= Math.round(this.totalPrice * 100); // bug fixed, it need to round before sending to backend, it will display the 18.98 otherwise
     this.paymentInfo.currency = "USD";
+    this.paymentInfo.receiptEmail=purchase.customer.email;
   
 
     // if valid form then
