@@ -4,6 +4,10 @@
  * ----------------------------
  */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
  *{
     margin:0;
     padding:0;
@@ -45,6 +49,11 @@ button{
 
 img{
     max-width:100%;
+    height:auto
+}
+
+.logoimg{
+    max-width:60%;
     height:auto
 }
 

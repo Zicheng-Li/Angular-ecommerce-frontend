@@ -8,10 +8,10 @@
                             <img src="{{ temp.imageUrl}}" class="img-responsive">
                         </a>
                         <a routerLink="/products/{{temp.id}}">
-                            <h1 >{{ temp.name }}</h1>
+                            <h1 class="text-sm font-medium text-slate-900" >{{ temp.name }}</h1>
                         </a>
                         <div class="price"> {{ temp.unitPrice | currency:'USD' }} </div>
-                        <button (click)="addToCart(temp)" class="btn btn-primary btn-sm">Add to cart</button>
+                        <button (click)="addToCart(temp)" class="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">Add to cart</button>
                     </div>
                 </div>
 
