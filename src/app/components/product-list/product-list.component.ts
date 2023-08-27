@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   currentCategoryId: number = 1;
   previousCategoryId: number=1;
   searchMode: boolean = false;
+  currentCategoryName: string = '';
 
   // new properties for pagination
     thePageNumber: number = 1;
@@ -78,9 +79,11 @@ export class ProductListComponent implements OnInit {
     if (hasCategoryId) {
       // get the id parameter, convert string to number using the + symbol, the '!' is asseration operator to tell the compiler error.
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
+      this.currentCategoryName = this.route.snapshot.paramMap.get('name')!;
     }
     else{
       this.currentCategoryId = 1;
+      this.currentCategoryName = 'Books';
     }
 
     //
