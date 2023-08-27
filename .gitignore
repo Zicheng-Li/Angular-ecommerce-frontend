@@ -41,3 +41,4 @@ testem.log
 .DS_Store
 Thumbs.db
 src/app/config/my-app-config.ts
+src/assets/images/my.jpg
