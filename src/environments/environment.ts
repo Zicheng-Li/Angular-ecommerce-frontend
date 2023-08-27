@@ -6,7 +6,8 @@
 // the default run commond is this environment
 export const environment = {
   production: false,
-  myApiUrl: 'https://localhost:8443/api'
+  myApiUrl: 'https://localhost:8443/api',
+  stripePublishableKey: "pk_test_51NhhGuLfm6896OWI45Z4pJqdsqhbufJnM7Nm5ApZ2SYXVpuAfaTUkSDwl3NvXJ424bnceHldg4hwJ4BFhgxzzQ1m00NlodTlm9"
 
 };
 
