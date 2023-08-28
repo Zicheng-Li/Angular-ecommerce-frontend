@@ -52,22 +52,17 @@
                 special angular syntax for two-way data binding [()]
                 [] this is one way data binding, it will get the result from the service
                 () this is one way data binding, for event binding, when user click page change, it will sent the event to the service. -->
-<div class="footer--pagination flex justify-center">
-    <div class="flex items-center">
-        <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize" [collectionSize]="theTotalElements"
-            [maxSize]="5" [boundaryLinks]="true" (pageChange)="listProducts()">
-        </ngb-pagination>
-        <div class="ml-4 flex items-center">
-            <span class="mr-2">Page Size</span>
-            <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
-                <option selected="true">5</option>
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-                <option>50</option>
-            </select>
-        </div>
-    </div>
-</div>
+                <div class="footer--pagination flex justify-center">
+                    <div class="flex items-center">
+                        <p-paginator 
+                            (onPageChange)="updatePageSize($event)" 
+                            [first]="(thePageNumber - 1) * thePageSize" 
+                            [rows]="thePageSize" 
+                            [totalRecords]="theTotalElements" 
+                            [rowsPerPageOptions]="[5, 10, 20, 30, 50]">
+                        </p-paginator>
+                    </div>
+                </div>
+                
 
 <!--end footer-->

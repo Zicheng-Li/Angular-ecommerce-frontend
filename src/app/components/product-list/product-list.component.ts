@@ -119,9 +119,9 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  updatePageSize(pageSize: string) {
-    this.thePageSize = +pageSize; // use + to convert string to number
-    this.thePageNumber = 1;
+  updatePageSize(event : any) {
+    this.thePageSize = event.rows; 
+    this.thePageNumber = event.page + 1;
     this.listProducts();
     }
 

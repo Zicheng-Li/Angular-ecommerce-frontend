@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
 
+
+import { PaginatorModule } from 'primeng/paginator';
 // Angular language service angular.io/guide/language-service
 // ng-bootstrap
 // special angular syntax for two-way data binding [()]
@@ -91,7 +93,8 @@ const routes : Routes = [
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    OktaAuthModule
+    OktaAuthModule,
+    PaginatorModule
   ],
   providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
