@@ -31,8 +31,6 @@
                                 to cart</button>
                         </div>
                     </div>
-
-
                 </div>
             </div>
 
@@ -52,17 +50,13 @@
                 special angular syntax for two-way data binding [()]
                 [] this is one way data binding, it will get the result from the service
                 () this is one way data binding, for event binding, when user click page change, it will sent the event to the service. -->
-                <div class="footer--pagination flex justify-center">
-                    <div class="flex items-center">
-                        <p-paginator 
-                            (onPageChange)="updatePageSize($event)" 
-                            [first]="(thePageNumber - 1) * thePageSize" 
-                            [rows]="thePageSize" 
-                            [totalRecords]="theTotalElements" 
-                            [rowsPerPageOptions]="[5, 10, 20, 30, 50]">
-                        </p-paginator>
-                    </div>
-                </div>
-                
+<div class="footer--pagination flex justify-center">
+    <div class="flex items-center">
+        <p-paginator (onPageChange)="updatePageSize($event)" [first]="(thePageNumber - 1) * thePageSize"
+            [rows]="thePageSize" [totalRecords]="theTotalElements" [rowsPerPageOptions]="[5, 10, 20, 30, 50]">
+        </p-paginator>
+    </div>
+</div>
+
 
 <!--end footer-->

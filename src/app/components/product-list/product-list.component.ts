@@ -119,9 +119,9 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  updatePageSize(event : any) {
-    this.thePageSize = event.rows; 
-    this.thePageNumber = event.page + 1;
+  updatePageSize(event : PageEvent) {
+    this.thePageSize = event.rows || this.thePageSize; 
+    this.thePageNumber = (event.page || 0) + 1;
     this.listProducts();
     }
 
@@ -132,4 +132,11 @@ export class ProductListComponent implements OnInit {
       this.cartService.addToCart(theCartItem);
     
     }
-  }   
+  } 
+  
+  interface PageEvent {
+    first?: number;
+    rows?: number;
+    page?: number;
+    pageCount?: number;
+}

@@ -20,6 +20,7 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 
 
 import { PaginatorModule } from 'primeng/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular language service angular.io/guide/language-service
 // ng-bootstrap
 // special angular syntax for two-way data binding [()]
@@ -94,7 +95,8 @@ const routes : Routes = [
     NgbModule,
     ReactiveFormsModule,
     OktaAuthModule,
-    PaginatorModule
+    PaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
