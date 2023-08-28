@@ -6,8 +6,9 @@
 
             <div *ngFor="let temp of products">
                 <div class="group relative">
-                    
-                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-60">
                         <a routerLink="/products/{{temp.id}}">
                             <img src="{{ temp.imageUrl}}" class="h-full w-full object-cover object-center">
                         </a>
@@ -16,12 +17,12 @@
                     <div class="mt-4 flex justify-between">
                         <div>
                             <a routerLink="/products/{{temp.id}}">
-                            <h1 class="text-sm text-gray-700">
-                                <span aria-hidden="true" class="absolute"></span>{{ temp.name }}
-                            </h1>
-                        </a>
+                                <h1 class="text-sm text-gray-700">
+                                    <span aria-hidden="true" class="absolute"></span>{{ temp.name }}
+                                </h1>
+                            </a>
                         </div>
-                        
+
                         <div class="flex flex-col items-end">
                             <div class="text-sm font-medium text-gray-900 text-right"> {{ temp.unitPrice |
                                 currency:'USD' }} </div>
@@ -51,30 +52,22 @@
                 special angular syntax for two-way data binding [()]
                 [] this is one way data binding, it will get the result from the service
                 () this is one way data binding, for event binding, when user click page change, it will sent the event to the service. -->
-<div class="footer--pagination">
-    <div class="row">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-9" style="padding-right: 70%">
-                    <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
-                        [collectionSize]="theTotalElements" [maxSize]="5" [boundaryLinks]="true"
-                        (pageChange)="listProducts()">
-                    </ngb-pagination>
-                </div>
-                <div class="col-md-3 mt-2" style="text-align: right">
-                    <span class="mr-2">Page Size</span>
-                    <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
-                        <option selected="true">5</option>
-                        <option>10</option>
-                        <option>20</option>
-                        <option>30</option>
-                        <option>50</option>
-                    </select>
-                </div>
-            </div>
+<div class="footer--pagination flex justify-center">
+    <div class="flex items-center">
+        <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize" [collectionSize]="theTotalElements"
+            [maxSize]="5" [boundaryLinks]="true" (pageChange)="listProducts()">
+        </ngb-pagination>
+        <div class="ml-4 flex items-center">
+            <span class="mr-2">Page Size</span>
+            <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                <option selected="true">5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+                <option>50</option>
+            </select>
         </div>
     </div>
 </div>
+
 <!--end footer-->
