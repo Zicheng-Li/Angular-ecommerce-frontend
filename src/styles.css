@@ -48,6 +48,15 @@
     background: transparent !important;
 }
 
+.mdc-button.mat-primary {
+    background-color: #3f51b5 !important; 
+    color: white !important; 
+    font-size: 12px !important;
+    min-width: 80px !important; 
+    white-space: nowrap !important; 
+}
+
+
 
 
 body{
@@ -1081,3 +1090,4 @@ footer ul li{
         padding:8px 0
     }
 }
+html, body { height: 100%; }
