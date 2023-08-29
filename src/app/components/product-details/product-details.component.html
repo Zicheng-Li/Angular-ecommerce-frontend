@@ -9,7 +9,7 @@
         <div class="price">
             {{product.unitPrice | currency: 'USD'}}
         </div>
-        <button (click)="addToCart()"  class="btn btn-primary btn-sm">Add to cart</button>
+        <button mat-raised-button color="primary" (click)="addToCart()">Add to cart</button>
         <hr>
         <h4>Description</h4>
         <p>{{product.description}}</p>

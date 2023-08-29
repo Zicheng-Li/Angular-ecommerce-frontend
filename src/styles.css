@@ -23,25 +23,25 @@
 .p-paginator .p-paginator-next,
 .p-paginator .p-paginator-first,
 .p-paginator .p-paginator-last {
-    font-size: 15px; /* 调整字体大小 */
-    padding: 5px 10px; /* 调整按钮内边距 */
+    font-size: 15px; 
+    padding: 5px 10px; 
     background: transparent;
 }
 
 .p-paginator .p-paginator-page {
-    font-size: 15px; /* 调整字体大小 */
-    padding: 5px 10px; /* 调整按钮内边距 */
+    font-size: 15px; 
+    padding: 5px 10px; 
     background: transparent;
 
 }
 
 .p-paginator .p-dropdown .p-dropdown-label {
-    font-size: 15px; /* 调整字体大小 */
+    font-size: 15px; 
     background: transparent;
 }
 
 .p-component{
-    font-size: 15px !important; /* 调整字体大小 */
+    font-size: 15px !important; 
 }
 
 .p-paginator {
@@ -302,7 +302,7 @@ input.au-input.au-input-xl{
 }
 
 .total{
-    background:#205b8d;
+    background:#3f51b5;
     line-height:43px;
     color:#fff;
     border-radius:30px;
@@ -334,12 +334,13 @@ input.au-input.au-input-xl{
     position:relative;
     right:0;
     min-width:95px;
-    color:#fff;
-    border:1px solid #205b8d;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
+    color:#fff !important;
+    border:1px solid #205b8d ;
+    -webkit-border-radius:3px ;
+    -moz-border-radius:3px ;
     border-radius:43px;
-    background:#205b8d
+    background:#FF4081
+    !important
 }
 
 .au-btn-submit:hover{
