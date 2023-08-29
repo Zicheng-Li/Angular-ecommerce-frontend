@@ -19,6 +19,37 @@
     box-sizing:border-box
 }
 
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-last {
+    font-size: 15px; /* 调整字体大小 */
+    padding: 5px 10px; /* 调整按钮内边距 */
+    background: transparent;
+}
+
+.p-paginator .p-paginator-page {
+    font-size: 15px; /* 调整字体大小 */
+    padding: 5px 10px; /* 调整按钮内边距 */
+    background: transparent;
+
+}
+
+.p-paginator .p-dropdown .p-dropdown-label {
+    font-size: 15px; /* 调整字体大小 */
+    background: transparent;
+}
+
+.p-component{
+    font-size: 15px !important; /* 调整字体大小 */
+}
+
+.p-paginator {
+    background: transparent !important;
+}
+
+
+
 body{
     font-family:var(--font-family);
     font-weight:400;
