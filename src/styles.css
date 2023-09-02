@@ -158,9 +158,7 @@ a,a:hover{
 }
 
 .page-wrapper{
-    overflow:hidden;
-   
-    
+    overflow:hidden;    
 }
 
 .page-container{
@@ -298,7 +296,7 @@ input.au-input.au-input-xl{
     display: flex;
     align-items: center;
     margin-top:12px;
-    color:#c30e0e;
+    color:#3f51b5;
     padding-left: 10px;
 }
 
