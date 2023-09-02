@@ -159,7 +159,7 @@ a,a:hover{
 
 .page-wrapper{
     overflow:hidden;
-    background:#e5e5e5;
+   
     
 }
 
@@ -257,7 +257,7 @@ section{
 
 .section-content{
     position:relative;
-    margin:0 auto;
+    
     z-index:1
 }
 
@@ -295,10 +295,11 @@ input.au-input.au-input-xl{
 
 .cart-area i{
     font-size:25px;
-    float:left;
-    margin-top:18px;
-    color:#fff;
-    margin-left:15px
+    display: flex;
+    align-items: center;
+    margin-top:12px;
+    color:#c30e0e;
+    padding-left: 10px;
 }
 
 .total{
@@ -309,7 +310,7 @@ input.au-input.au-input-xl{
     border:1px solid #0da8e4;
     float:left;
    
-    margin-left: 40px;
+    margin-left: 0px;
     padding-left:17px
 }
 
