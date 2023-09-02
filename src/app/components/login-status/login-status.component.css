@@ -6,12 +6,10 @@
 .security-btn{
     position:relative;
     right:10px;
-    color:#fff;
-    border:10px solid #205b8d;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:0;
-    background:#205b8d
+    color:#fff !important;
+
+   
+    background:#f98f04
 }
 /*
  copy from styles.css -> .form-header
@@ -31,9 +29,8 @@
  rename as 
 */
 .login-status-user-info{
-    line-height:43px;
     border:1px;
-    padding:0 17px;
+    white-space: nowrap;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:3px;
@@ -41,4 +38,9 @@
     -o-transition:all .5s ease;
     -moz-transition:all .5s ease;
     transition:all .5s ease
+}
+
+
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: #f98f04;
 }
