@@ -19,6 +19,10 @@
     box-sizing:border-box
 }
 
+.link:hover{
+    color: #232324;
+}
+
 .p-paginator .p-paginator-prev,
 .p-paginator .p-paginator-next,
 .p-paginator .p-paginator-first,
@@ -167,7 +171,8 @@ a,a:hover{
 }
 
 .main-content{
-    min-height:100vh
+    min-height:100vh;
+    
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr{
