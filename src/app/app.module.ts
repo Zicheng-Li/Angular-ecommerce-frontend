@@ -99,7 +99,7 @@ const routes : Routes = [
     OktaAuthModule,
     PaginatorModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
