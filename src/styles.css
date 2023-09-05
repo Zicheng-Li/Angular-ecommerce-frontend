@@ -741,7 +741,7 @@ select{
 }
 table.table.table-bordered{
     border:1px solid #ccc;
-    background:#fff
+    background:#eff6ff
 }
 .table-bordered td,.table-bordered th{
     border:1px solid #dee2e6
