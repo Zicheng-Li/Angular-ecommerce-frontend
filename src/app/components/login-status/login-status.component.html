@@ -1,10 +1,14 @@
 <div class="login-status-header">
-    <div class="login-status-user-info text-base pr-5 " *ngIf="isAuthenticated && userFullName">
+    <div class="login-status-user-info text-base pr-5" *ngIf="(auth.isAuthenticated$ | async) && userFullName">
         Welcome back {{userFullName}}!
+    </div>    
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <button mat-raised-button (click)="handleLogout()" class="security-btn">Logout</button>
+        <button mat-raised-button routerLink="/members" class="security-btn">Member</button>
+        <button mat-raised-button routerLink="/order-history" class="security-btn">Orders</button>
+    </ng-container>
 
-    </div>
-    <button mat-raised-button  *ngIf="!isAuthenticated" routerLink="/login" class="security-btn">Login </button>
-    <button mat-raised-button *ngIf="isAuthenticated" (click)="logout()" class="security-btn">Logout </button>
-    <button mat-raised-button *ngIf="isAuthenticated" routerLink="/members" class="security-btn ">Member</button>
-    <button mat-raised-button *ngIf="isAuthenticated" routerLink="/order-history" class="security-btn ">Orders</button>
+    <ng-template #loggedOut>
+        <button mat-raised-button (click)="auth.loginWithRedirect()" class="security-btn">Login</button>
+    </ng-template>
 </div>

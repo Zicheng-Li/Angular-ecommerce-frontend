@@ -15,12 +15,10 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.handleOrderHistory();
-    
-  
   }
   handleOrderHistory() {
     // read the email from the session storage
-    const theEmail =JSON.parse(this.storage.getItem("theEmail")!);
+    const theEmail =(this.storage.getItem("userEmail")!);
     console.log(theEmail);
 
     // retrieve the order history list
@@ -28,9 +26,6 @@ export class OrderHistoryComponent implements OnInit {
       data => {
         this.orderHistoryList = data._embedded.orders;
       });
-      console.log(this.orderHistoryList);
-      
-
   }
 
 }

@@ -1,4 +1,4 @@
-import { Injector, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -36,33 +36,15 @@ import {MatButtonModule} from '@angular/material/button';
 // OktaAuthGuard
 // web storage api, HTML5: store the data use storage.setItem(key, value), retrieve data using storage.getItem(key)
 
-import{
-  OktaAuthModule,
-  OktaCallbackComponent,
-  OKTA_CONFIG,
-  OktaAuthGuard
-} from '@okta/okta-angular';
-
-import { OktaAuth } from '@okta/okta-auth-js';
-import myAppConfig from './config/my-app-config';
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthGuard } from '@auth0/auth0-angular';
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
-const oktaConfig =  myAppConfig.oidc;
-
-const oktaAuth = new OktaAuth(oktaConfig);
-
-function sendToLogin(oktaAuth: OktaAuth, injector: Injector) {
-  // use injector to access any services within the application
-  const router = injector.get(Router);
-  router.navigate(['/login']);
-} 
+import { environment } from 'src/environments/environment';
 
 const routes : Routes = [
-  {path: 'order-history', component: OrderHistoryComponent, canActivate: [OktaAuthGuard],
-                data: {onAuthRequired: sendToLogin}},
-  {path: 'members', component: MembersPageComponent, canActivate: [OktaAuthGuard],
-                data: {onAuthRequired: sendToLogin}},
-  {path: 'login/callback', component: OktaCallbackComponent},  // okta package module, user will redirect
+  {path: 'order-history', component: OrderHistoryComponent,canActivate: [AuthGuard]},
+  {path: 'members', component: MembersPageComponent,canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
@@ -96,12 +78,18 @@ const routes : Routes = [
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    OktaAuthModule,
+    AuthModule.forRoot({
+      domain: environment.auth.domain,
+      clientId: environment.auth.clientId,
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),    
     PaginatorModule,
     BrowserAnimationsModule,
     MatButtonModule,
   ],
-  providers: [ProductService, {provide: OKTA_CONFIG, useValue: {oktaAuth}}],
+  providers: [ProductService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
