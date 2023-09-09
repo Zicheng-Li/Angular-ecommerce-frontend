@@ -6,7 +6,7 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
 
 ## Features
 
-![Frontend Interface](2.png)
+![Frontend Interface](1.png)
 
 - **Dynamic UI/UX:** Built with Angular 16 and enhanced with Bootstrap, Tailwind, PrimeNG, and Angular Material for a responsive and interactive user interface.
   
