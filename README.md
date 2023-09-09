@@ -2,6 +2,8 @@
 
 This repository contains the frontend code for EL's Online Shop, a dynamic e-commerce platform developed using Angular 16.
 
+## Backend Repository: [Spring-ecommerce-backend](https://github.com/Zicheng-Li/Spring-ecommerce-backend)
+
 ## Features
 
 - **Dynamic UI/UX:** Built with Angular 16 and enhanced with Bootstrap, Tailwind, PrimeNG, and Angular Material for a responsive and interactive user interface.
