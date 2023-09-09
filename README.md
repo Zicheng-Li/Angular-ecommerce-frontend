@@ -36,7 +36,7 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
      }
    };
 4. Run `npm install` to install the required dependencies.
-5. Run `npm start` to start the development server.
+5. Run `npm start` to start the development server and also make sure SpringBoot backend is running.
 6. Open your browser and navigate to `http://localhost:4200/`.
 
 ## Contributing
