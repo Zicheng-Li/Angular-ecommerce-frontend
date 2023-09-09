@@ -28,7 +28,7 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
    ```typescript
    export const environment = {
      production: false,
-     myApiUrl: 'https://localhost:8443/api',
+     myApiUrl: 'http://localhost:8443/api',
      stripePublishableKey: 'YOUR_KEY',
      auth: {
        domain: 'YOUR_DOMAIN',
