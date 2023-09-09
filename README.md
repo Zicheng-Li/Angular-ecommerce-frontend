@@ -35,7 +35,6 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
        clientId: 'YOUR_ID'
      }
    };
-    
 4. Run `npm install` to install the required dependencies.
 5. Run `npm start` to start the development server.
 6. Open your browser and navigate to `http://localhost:4200/`.
