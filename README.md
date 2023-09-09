@@ -25,18 +25,16 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
 2. Navigate to the project directory.
 3. Create a new environment.ts file and configurate your api and key for stripe and auth0.
    
-       ```typescript
-          export const environment = {
-          production: false,
-          myApiUrl: 'https://localhost:8443/api',
-          stripePublishableKey: 'YOUR_KEY',
-        
-          auth: {
-            domain: 'YOUR_DOMAIN',
-            clientId: 'YOUR_ID'
-          }
-        };
-      ```
+   ```typescript
+   export const environment = {
+     production: false,
+     myApiUrl: 'https://localhost:8443/api',
+     stripePublishableKey: 'YOUR_KEY',
+     auth: {
+       domain: 'YOUR_DOMAIN',
+       clientId: 'YOUR_ID'
+     }
+   };
     
 4. Run `npm install` to install the required dependencies.
 5. Run `npm start` to start the development server.
