@@ -4,7 +4,7 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
 
 ## Backend Repository: [Spring-ecommerce-backend](https://github.com/Zicheng-Li/Spring-ecommerce-backend)
 
-## Features
+## Features: [Link to Demo Video](https://youtu.be/q0_N9ydf67c)
 
 ![Frontend Interface](1.png)
 
