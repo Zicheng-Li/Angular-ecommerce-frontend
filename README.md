@@ -24,6 +24,7 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
 1. Clone this repository.
 2. Navigate to the project directory.
 3. Create a new environment.ts file and configurate your api and key for stripe and auth0.
+   
        ```typescript
     export const environment = {
   production: false,
@@ -36,6 +37,7 @@ This repository contains the frontend code for EL's Online Shop, a dynamic e-com
   }
 };
     ```
+    
 4. Run `npm install` to install the required dependencies.
 5. Run `npm start` to start the development server.
 6. Open your browser and navigate to `http://localhost:4200/`.
