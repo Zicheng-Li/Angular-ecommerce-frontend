@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.keyword = params['keyword'];
-      this.searchMode = params['searchMode'] === 'true'; 
+      this.searchMode = params['searchMode'] === 'true'; // params['searchMode'] this is a string 
     });
 
     this.route.paramMap.subscribe(() => {
