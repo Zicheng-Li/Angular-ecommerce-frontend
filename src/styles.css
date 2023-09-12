@@ -23,6 +23,10 @@
     color: #232324;
 }
 
+.clickAble{
+    cursor: pointer;
+}
+
 .p-paginator .p-paginator-prev,
 .p-paginator .p-paginator-next,
 .p-paginator .p-paginator-first,
