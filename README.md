@@ -1,27 +1,49 @@
-# AngularEcommerce
+# EL's Online Shop - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.7.
+This repository contains the frontend code for EL's Online Shop, a dynamic e-commerce platform developed using Angular 16.
 
-## Development server
+## Backend Repository: [Spring-ecommerce-backend](https://github.com/Zicheng-Li/Spring-ecommerce-backend)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features: [Link to Demo Video](https://youtu.be/q0_N9ydf67c)
 
-## Code scaffolding
+![Frontend Interface](1.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Dynamic UI/UX:** Built with Angular 16 and enhanced with Bootstrap, Tailwind, PrimeNG, and Angular Material for a responsive and interactive user interface.
+  
+- **User Authentication:** Integrated with Okta's Auth0 for secure user login and registration.
+  
+- **Shopping Cart Management:** Users can add products to their cart, view cart contents, and proceed to checkout.
 
-## Build
+## Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js and npm
+- Angular CLI
 
-## Running unit tests
+## Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Create a new environment.ts file and configurate your api and key for stripe and auth0.
+   
+   ```typescript
+   export const environment = {
+     production: false,
+     myApiUrl: 'http://localhost:8443/api',
+     stripePublishableKey: 'YOUR_KEY',
+     auth: {
+       domain: 'YOUR_DOMAIN',
+       clientId: 'YOUR_ID'
+     }
+   };
+4. Run `npm install` to install the required dependencies.
+5. Run `npm start` to start the development server and also make sure SpringBoot backend is running.
+6. Open your browser and navigate to `http://localhost:4200/`.
 
-## Running end-to-end tests
+## Contributing
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Further help
+## License
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[Apache 2.0](https://github.com/Zicheng-Li/Angular-ecommerce-frontend/blob/master/LICENSE)
+
