@@ -13,12 +13,19 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductDetailsComponent implements OnInit {
 
   product!: Product;
+  searchMode: boolean = false;
+  keyword: string = '';
   
   constructor(private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.keyword = params['keyword'];
+      this.searchMode = params['searchMode'] === 'true'; 
+    });
+
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
   })

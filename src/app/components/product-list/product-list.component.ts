@@ -4,6 +4,7 @@ import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/common/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -29,7 +30,8 @@ export class ProductListComponent implements OnInit {
   
   constructor(private productService: ProductService,
     private cartService: CartService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -131,7 +133,19 @@ export class ProductListComponent implements OnInit {
       this.cartService.addToCart(theCartItem);
     
     }
+
+    onProductClicked(productId: number) {
+      this.router.navigate(['/products', productId], {
+        queryParams: {
+          keyword: this.previousKeyword,
+          searchMode: this.searchMode.toString()
+        }
+      });
+    }
+    
   } 
+
+  
   
   interface PageEvent {
     first?: number;

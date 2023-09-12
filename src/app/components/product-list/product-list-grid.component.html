@@ -9,14 +9,14 @@
 
                     <div
                         class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-60">
-                        <a routerLink="/products/{{temp.id}}">
+                        <a (click)="onProductClicked(temp.id)">
                             <img src="{{ temp.imageUrl}}" class="h-full w-full object-cover object-center">
                         </a>
                     </div>
 
                     <div class="mt-4 flex justify-between">
                         <div>
-                            <a routerLink="/products/{{temp.id}}">
+                            <a (click)="onProductClicked(temp.id)">
                                 <h1 class="text-sm text-gray-700">
                                     <span aria-hidden="true" class="absolute"></span>{{ temp.name }}
                                 </h1>
