@@ -42,7 +42,6 @@ testem.log
 Thumbs.db
 src/app/config/my-app-config.ts
 src/assets/images/my.jpg
-src/assets/images/back.jpg
 src/assets/images/my.jpeg
 ssl-localhost/localhost.crt
 ssl-localhost/localhost.key
